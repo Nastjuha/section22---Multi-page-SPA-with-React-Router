@@ -7,6 +7,7 @@ import {
 
 import HomePage from "./pages/Home";
 import ProductsPage from "./pages/Products";
+import RootLayout from "./pages/Root";
 
 // const routeDefinitions = createRoutesFromElements(
 //   <Route>
@@ -19,8 +20,23 @@ import ProductsPage from "./pages/Products";
 
 // an array of route definition objects
 const router = createBrowserRouter([
-  { path: "/", element: <HomePage /> },
-  { path: "/products", element: <ProductsPage /> },
+  //1. we add an extra route to our router definition
+  // element that loads the layout wrapper, that should be wrapped around other routes
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [
+      { path: "/", element: <HomePage /> },
+      { path: "/products", element: <ProductsPage /> },
+    ],
+  }, // this element will wrap all other routes above
+  // we can add path-dependant layout wrappers here, e.x.:
+  // {
+  //   path: "/admin",
+  //   children: [
+
+  //   ]
+  // }
 ]);
 
 function App() {
