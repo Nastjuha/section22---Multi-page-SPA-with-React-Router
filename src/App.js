@@ -8,35 +8,18 @@ import {
 import HomePage from "./pages/Home";
 import ProductsPage from "./pages/Products";
 import RootLayout from "./pages/Root";
+import ErrorPage from "./pages/Error";
 
-// const routeDefinitions = createRoutesFromElements(
-//   <Route>
-//     <Route path="/" element={<HomePage />} />
-//     <Route path="/products" element={<ProductsPage />} />
-//   </Route>
-// );
-
-//const router = createBrowserRouter(routeDefinitions);
-
-// an array of route definition objects
 const router = createBrowserRouter([
-  //1. we add an extra route to our router definition
-  // element that loads the layout wrapper, that should be wrapped around other routes
   {
     path: "/",
     element: <RootLayout />,
+    errorElement: <ErrorPage />, // this will be shown if any of the child routes throw an error
     children: [
       { path: "/", element: <HomePage /> },
       { path: "/products", element: <ProductsPage /> },
     ],
-  }, // this element will wrap all other routes above
-  // we can add path-dependant layout wrappers here, e.x.:
-  // {
-  //   path: "/admin",
-  //   children: [
-
-  //   ]
-  // }
+  },
 ]);
 
 function App() {
