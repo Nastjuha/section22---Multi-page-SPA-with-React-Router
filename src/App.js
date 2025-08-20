@@ -17,10 +17,10 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <ErrorPage />, // this will be shown if any of the child routes throw an error
     children: [
-      { path: "/", element: <HomePage /> },
-      { path: "/products", element: <ProductsPage /> },
+      { path: "", element: <HomePage /> },
+      { path: "products", element: <ProductsPage /> },
       // dynamic path segments/ path parameters
-      { path: "/products/:productId", element: <ProductDetailsPage /> },
+      { path: "products/:productId", element: <ProductDetailsPage /> },
     ],
   },
 ]);
